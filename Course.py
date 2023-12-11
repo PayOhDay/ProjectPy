@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QTableWidget, QTableWidgetItem
-from PyQt5.QtSql import QSqlDatabase, QSqlQuery
+
 
 
 class Ui_MainWindow(object):
