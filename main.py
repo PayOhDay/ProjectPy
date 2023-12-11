@@ -1,9 +1,9 @@
 import pymysql
 
-host = 'localhost'
-user = 'root'
-password = ''
-database = 'Документооборот'
+# host = 'localhost'
+# user = 'root'
+# password = ''
+# database = 'Документооборот'
 
 
 try:

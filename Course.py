@@ -1,4 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTabWidget, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+import pymysql
 
 
 
@@ -87,6 +91,26 @@ class Ui_MainWindow(object):
         self.btm_address.setText(_translate("MainWindow", "По адресату"))
         self.btm_time.setText(_translate("MainWindow", "По периоду\nсоздания документа"))
         self.btm_type.setText(_translate("MainWindow", "По типу\nдокумента"))
+
+class DatabaseApp(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        # Устанавливаем соединение с базой данных
+        self.conn = pymysql.connect(
+            host='localhost',
+            user='root',
+            password='',
+            database='Документооборот'
+        )
+        # Создаем курсор для выполнения запросов
+        self.cursor = self.conn.cursor()
+
+        #НЕОБХОДИМО ПРОПИСАТЬ СОЕДИНЕНИЯ МОЕЙ ТАБЛИЦЫ
+        # Получаем данные из базы данных
+        self.cursor.execute("SELECT table1.field1, table1.field2, table2.field3 FROM table1 JOIN table2 ON table1.common_field = table2.common_field")
+        data = self.cursor.fetchall()
 
 
 if __name__ == "__main__":
